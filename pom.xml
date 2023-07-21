@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.12.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+    <groupId>org.chen.panda</groupId>
+    <artifactId>panda-cloud</artifactId>
+    <version>${project.version}</version>
+    <packaging>pom</packaging>
+
+    <name>panda-cloud</name>
+
+    <properties>
+        <java.version>1.8</java.version>
+        <spring-cloud.version>Hoxton.SR12</spring-cloud.version>
+        <project.version>1.0.0</project.version>
+        <rocketmq-client.version>4.9.7</rocketmq-client.version>
+        <seata-client.version>1.6.1</seata-client.version>
+        <apollo-client.version>1.9.2</apollo-client.version>
+        <alibaba-cloud-seata.version>2.2.9.RELEASE</alibaba-cloud-seata.version>
+    </properties>
+
+    <modules>
+        <module>feign-client</module>
+        <module>eureka-server</module>
+        <module>turbine</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.apache.rocketmq</groupId>
+                <artifactId>rocketmq-client</artifactId>
+                <version>${rocketmq-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.ctrip.framework.apollo</groupId>
+                <artifactId>apollo-client</artifactId>
+                <version>${apollo-client.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+                <version>${alibaba-cloud-seata.version}</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+</project>

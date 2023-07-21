@@ -1,0 +1,13 @@
+eureka:
+    client:
+        # 不从Eureka Server获取注册的服务信息
+        fetch-registry: false
+        # 注册到Eureka Server
+        register-with-eureka: false
+        # Eureka Server地址
+        service-url:
+            defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+    instance:
+        hostname: localhost
+server:
+    port: 1111

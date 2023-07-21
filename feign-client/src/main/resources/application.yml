@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: feign-client
+server:
+  port: 9999
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:1111/eureka/
+feign:
+  compression:
+    request:
+      enabled: true
+      mime-types: text/xml,application/xml,application/json
+      min-request-size: 2048
+  response:
+    enabled: true
+seata:
+  # seata的配置中心
+  config:
+    type: apollo
+    apollo:
+      apollo-meta: http://192.168.56.102:8070
+      app-id: seata-server
+      namespace: application
+      apollo-accesskey-secret: ""
+  # seata的注册中心
+  tx-service-group: my_test_tx_group
+    service:
+      vgroup-mapping:
+        my_test_tx_group: seata-server # 此处配置对应Server端配置registry.eureka.application的值
+    registry:
+      type: eureka
+      eureka:
+        service-url: http://localhost:1111/eureka
+        weight: 1
+  # 支持AT、XA模式
+  data-source-proxy-mode: AT
+logging:
+  level:
+    com:
+      example:
+        feginconsumer:
+          IHelloService: DEBUG
